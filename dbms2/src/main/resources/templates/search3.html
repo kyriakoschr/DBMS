@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html layout:decorator="layout/layout" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4">        
+            <div class="panel panel-default">
+                <div class="panel-heading">Find the total requests per type that were created within a specified time range and sort them in a descending order</div>
+                <div class="panel-body" style="display:flex">
+                    <form method="post" class="form-group" action="/sear1">
+                        <div class="form-group">
+                            <label for="Username">Starting Date and time:&nbsp;</label>
+                            <input class="form-control" type="text" name="start1" id="start1"/>
+                            <label for="Username">Ending Date and time:&nbsp;</label>
+                            <input class="form-control" type="text" name="end1" id="end1"/>
+                        </div>                        
+                        <input class="btn btn-primary" type="submit" value="Search"/>
+                    </form>
+                    <br></br>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Find the total requests per day for a specific request type and time range</div>
+                <div class="panel-body" style="display:flex">
+                    <form method="post" class="form-group" action="/sear2">
+                        <div class="form-group">
+                            <label for="Username">Type:&nbsp;</label>
+                            <select id="type2" name="type2">
+                                <option value="Abandoned Vehicle Complaint">Abandoned vehicles </option>
+                                <option value="Garbage Cart Black Maintenance/Replacement">Garbage Carts</option>
+                                <option value="Alley Light Out">Alley Light Out</option>
+                                <option value="Pot Hole in Street">Pot Hole</option>
+                                <option value="Sanitation Code Violation">Sanitation Code Violation</option>
+                                <option value="Rodent Baiting/Rat Complaint">Rodent Baiting/Rat Complaint </option>
+                                <option value="Street Lights - All/Out">Street Lights All Out</option>
+                                <option value="Street Light - 1/Out">Street Light One Out</option>
+                                <option value="Graffiti Removal">Graffiti Removal </option>
+                                <option value="Tree Debris">Tree Debris</option>
+                                <option value="Tree Trim">Tree Trim</option>
+                            </select><br></br>
+                            <label for="Username">Starting Date and time:&nbsp;</label>
+                            <input class="form-control" type="text" name="start2" id="start2"/>
+                            <label for="Username">Ending Date and time:&nbsp;</label>
+                            <input class="form-control" type="text" name="end2" id="end2"/>
+                        </div>                        
+                        <input class="btn btn-primary" type="submit" value="Search"/>
+                    </form>
+                    <br></br>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Find the most common service request per zipcode for a specific day</div>
+                <div  class="panel-body" style="display:flex">
+                    <form method="post" class="form-group" action="/sear3">
+                        <div class="form-group">
+                            <label for="Username">Day:&nbsp;</label>
+                            <input class="form-control" type="text" name="day3" id="day3"/>
+                        </div>                        
+                        <input class="btn btn-primary" type="submit" value="Search"/>
+                    </form>
+                    <br></br>
+                </div>
+            </div>
+        </div>
+       
+        <div  id="s3" class="col-md-8 col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Results:</div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Zip Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="result3 : ${results3}">
+                                <td th:text="${result3.getType()}">Type</td>
+                                <td th:text="${result3.getZipCode()}">ZipCode</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

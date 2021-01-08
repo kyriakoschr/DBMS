@@ -1,0 +1,34 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+group 'databasesystems'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+mainClassName = 'databasesystems.SpringBootPostgresExample'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.mongodb:mongodb-driver:3.3.0'
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-parent:1.5.10.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-devtools:$springBootVersion"
+    compile "org.json:json:20180130"
+    compile "org.springframework.boot:spring-boot-starter-data-mongodb"
+}
